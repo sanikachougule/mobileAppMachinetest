@@ -1,0 +1,29 @@
+
+<div class="card">
+    <div class="card-body">
+        <form #todoForm="ngForm" (ngSubmit)="onTodoAdd()">
+            <div class="form-group">
+                <label for="todoItem" class="font-weight-bold font-size-15px">TodoItem</label>
+                <input type="text" name="todoItem"
+                #todoItem="ngModel"
+                ngModel 
+                required
+                class="form-control" 
+                id="todoItem"
+                pattern="[a-zA-Z0-9._%+-]+"
+                >
+                
+                <span class="text-danger" *ngIf="todoItem.touched && todoItem.hasError('required')">
+                    Todo item is required filed
+                </span>
+                <span class="text-danger" *ngIf="todoItem.dirty && todoItem.hasError('pattern')">
+                    Invalid Todo Item
+                </span>
+
+            </div>
+            <div class="text-right">
+                <button class="btn btn-info" type="submit">Add Todo</button>
+            </div>
+        </form>
+    </div>
+</div>

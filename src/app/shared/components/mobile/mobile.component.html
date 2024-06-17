@@ -1,0 +1,51 @@
+<h2 class="bg-info mb-5 text-center p-3">Mobile Products</h2>
+<div class="row mt-5">
+    <div class="col-md-12 mb-4" *ngFor="let mobileObj of mobileArr">
+        <div class="card"
+        [ngClass]="{
+            'noAvl':!mobileObj.isAvailable
+        }">
+         <p class="noProAvl d-flex justify-content-center align-items-center" *ngIf="!mobileObj.isAvailable">
+            Product is Not Available !!!
+         </p>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="imgContainer">
+                            <img *ngIf="mobileObj.image;else noMobileImg"
+                            [src]="mobileObj.image" [alt]="mobileObj.name" title="mobileObj.name">
+                            <ng-template #noMobileImg>
+                                <img src="https://placehold.co/600x400" [alt]="mobileObj.name" [title]="mobileObj.name" class="img-fluid">
+                            </ng-template>
+                       </div>
+                    </div>
+                    <div class="col-md-5">
+                        <h3 class="mt-2">{{mobileObj.name}}
+                            <span class="rating"
+                             [ngClass]="{
+                                 'bg-success':mobileObj.rating >=4,
+                                 'bg-warning':mobileObj.rating >=3 && mobileObj.rating < 4,
+                                 'bg-danger': mobileObj.rating < 3
+                             }"
+                            >{{mobileObj.rating}}</span>
+                        </h3>
+                        <ul>
+                            <li *ngFor="let spec of mobileObj.specification">
+                                {{spec}}
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-md-3">
+                         <div class="priceContainer">
+                            <h3>₹{{mobileObj.price}}</h3>
+                            <img src="https://static-assets-web.flixcart.com/fk-p-linchpin-web/fk-cp-zion/img/fa_62673a.png"  alt="FlipKart Assured"
+                            title="FlipKart Assured" class="imgFlipKart">
+                            <p class="mb-0">Free Delivery</p>
+                            <p class="priceOffer mb-0">Save extra with combo offers</p>
+                         </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

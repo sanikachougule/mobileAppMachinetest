@@ -1,0 +1,20 @@
+<div class="container">
+     <app-mobile></app-mobile>
+</div>
+<br>
+<br>
+<hr>
+<hr>
+
+
+<div class="container todo">
+    <h2 class="bg-success mb-5 font-weight-bold text-center p-3">Using IO Decorator Todo Data</h2>
+     <div class="row">
+         <div class="col-md-6">
+          <app-todo-form (emmitTodos)="getTodos($event)"></app-todo-form>
+         </div>
+         <div class="col-md-6">
+             <app-todo-list [getTodoArray]="todoArray"></app-todo-list>
+         </div>
+     </div>
+</div>
